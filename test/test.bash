@@ -5,13 +5,13 @@ WS_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
 
 cd "$WS_DIR" || exit 1
 
-colcon build --packages-select node_activity_evaluator > /dev/null 2>&1 || exit 1
+colcon build
 source install/setup.bash
 
 run_test () {
-  timeout 8 ros2 launch mypkg worker_evaluator.launch.py worker.skip_probability:=$2 > /tmp/test.log 2>&1
+  timeout 8 ros2 launch mypkg worker_evaluator.launch.py worker.skip_probability:=$2 > /tmp/mypkg.log 2>&1
 
-  grep -q "$1" /tmp/test.log
+  grep -q "$1" /tmp/mypkg.log
 }
 
 run_test EXCELLENT 0.0 || exit 1
