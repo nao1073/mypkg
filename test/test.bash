@@ -3,26 +3,22 @@
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 WS_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
 
-
 cd "$WS_DIR" || exit 1
 
-colcon build
+colcon build --packages-select node_activity_evaluator > /dev/null 2>&1 || exit 1
 source install/setup.bash
 
 run_test () {
-  EXPECTED=$1
-  SKIP_PROB=$2
+  timeout 8 ros2 launch node_activity_evaluator activity_evaluator.launch.py \
+    worker_node.skip_probability:=$2 \
+    > /tmp/test.log 2>&1
 
-  timeout 8 ros2 launch $PKG_NAME $LAUNCH_FILE \
-    worker_node.skip_probability:=$SKIP_PROB \
-    > $LOG_FILE 2>&1
-
-  grep -q "$EXPECTED" $LOG_FILE
+  grep -q "$1" /tmp/test.log
 }
 
-run_test "EXCELLENT" 0.0 || exit 1
-run_test "WARNING"   0.4 || exit 1
-run_test "CRITICAL"  0.8 || exit 1
+run_test EXCELLENT 0.0 || exit 1
+run_test WARNING   0.4 || exit 1
+run_test CRITICAL  0.8 || exit 1
 
 exit 0
 
