@@ -16,6 +16,7 @@ def generate_launch_description():
         Node(
             package='mypkg',
             executable='worker',
+            output='screen',
             emulate_tty=True,   # ← worker にも付けるとより確実
             parameters=[
                 {'publish_rate': 1.0},
@@ -26,6 +27,7 @@ def generate_launch_description():
         Node(
             package='mypkg',
             executable='evaluator',
+            output='screen',
             emulate_tty=True,
             parameters=[
                 {'ok_time': 1.5},
