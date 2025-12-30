@@ -17,7 +17,7 @@ def generate_launch_description():
             package='mypkg',
             executable='worker',
             output='screen',
-            emulate_tty=True,   # ← worker にも付けるとより確実
+            emulate_tty=True,
             parameters=[
                 {'publish_rate': 1.0},
                 {'skip_probability': skip_probability},
