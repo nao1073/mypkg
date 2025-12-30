@@ -9,7 +9,7 @@ colcon build
 source install/setup.bash
 
 run_test () {
-  timeout 8 ros2 launch mypkg worker_evaluator.launch.py worker.skip_probability:=$2 > /tmp/mypkg.log 2>&1
+  timeout 8 ros2 launch mypkg worker_evaluator.launch.py skip_probability:=$2 > /tmp/mypkg.log 2>&1
 
   grep -q "$1" /tmp/mypkg.log
 }
