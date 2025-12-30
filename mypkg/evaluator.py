@@ -22,7 +22,7 @@ class EvaluatorNode(Node):
             10
         )
 
-        self.timer = self.create_timer(1.0, self.evaluate)
+        self.create_timer(1.0, self.evaluate)
 
     def callback(self, msg):
         self.last_time = time.time()
@@ -36,7 +36,6 @@ class EvaluatorNode(Node):
             self.get_logger().warn('WARNING')
         else:
             self.get_logger().error('CRITICAL')
-
 
 def main():
     rclpy.init()
