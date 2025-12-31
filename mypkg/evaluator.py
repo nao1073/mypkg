@@ -7,15 +7,15 @@ class EvaluatorNode(Node):
     def __init__(self):
         super().__init__('evaluator')
 
-        self.ok_time = self.get_parameter('ok_time', 1.0).value
-        self.warn_time = self.get_parameter('warn_time', 2.0).value
+        self.ok_time   = self.declare_parameter('ok_time', 1.5).value
+        self.warn_time = self.declare_parameter('warn_time', 3.0).value
 
         self.last_time = time.time()
 
         self.create_subscription(Int32, 'heartbeat', self.callback, 10)
         self.create_timer(1.0, self.evaluate)
 
-    def callback(self, msg):
+    def callback(self, _):
         self.last_time = time.time()
 
     def evaluate(self):
@@ -30,8 +30,6 @@ class EvaluatorNode(Node):
 
 def main():
     rclpy.init()
-    node = EvaluatorNode()
     rclpy.spin(node)
-    node.destroy_node()
     rclpy.shutdown()
 
