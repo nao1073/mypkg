@@ -14,12 +14,12 @@ class WorkerNode(Node):
         self.create_timer(1.0 / rate, self.publish)
 
     def publish_heartbeat(self):
-        if random.random() < self.skip_prob:
+        if random.random() >= self.skip_prob:
             self.publisher.publish(Int32(data=1))
 
 
 def main():
     rclpy.init()
-    rclpy.spin(node)
+    rclpy.spin(WorkerNode)
     rclpy.shutdown()
 
