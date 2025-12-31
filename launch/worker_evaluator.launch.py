@@ -16,8 +16,6 @@ def generate_launch_description():
         Node(
             package='mypkg',
             executable='worker',
-            output='screen',
-            emulate_tty=True,
             parameters=[
                 {'publish_rate': 1.0},
                 {'skip_probability': skip_probability},
@@ -27,8 +25,6 @@ def generate_launch_description():
         Node(
             package='mypkg',
             executable='evaluator',
-            output='screen',
-            emulate_tty=True,
             parameters=[
                 {'ok_time': 1.0},
                 {'warn_time': 2.0},
