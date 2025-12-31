@@ -4,31 +4,31 @@
 ![test](https://github.com/nao1073/mypkg/actions/workflows/test.yml/badge.svg)
 
 ## 事前準備
-事前にros2を使える環境にし、以下のコマンドを実行してローカル環境でコマンドを実行できるようにしてください。
+以下のようにこのリポジトリをクローンしてください。
 ```
 $ git clone https://github.com/nao1073/mypkg.git
-$ colcon build
-$ source install/setup.bash
 ```
 
 ## worker_evaluatorコマンド
 - workerノード
-  - 確率的にタイミングのずれた心拍を模した信号を出力します。
+  - 一定周期の信号を生成しますが確率的に信号をスキップし、不規則な信号を送信します。
 - evalutorノード
   - workerコマンドから受け取った心拍信号の到達間隔からEXCELLENT / WARNING / CRITICALの3段階でタイミングを評価します。
 - worker_evaluator　launch
   - workerノードとevaluatorノードを同時に起動・管理するlaunchファイルです。
 
-## 実行方法と出力例
+実行方法と出力例
 ```
 $ ros2 launch mypkg worker_evaluator.launch.py
-[evaluator-2] [INFO] [1767159470.120806471] [evaluator]: EXCELLENT
+[evaluator-2] [WARN] [1767165966.538482116] [evaluator]: WARNING
+[evaluator-2] [ERROR] [1767165967.521475955] [evaluator]: CRITICAL
+[evaluator-2] [INFO] [1767165968.521262174] [evaluator]: EXCELLENT
+[evaluator-2] [INFO] [1767165969.521338456] [evaluator]: EXCELLENT
+[evaluator-2] [INFO] [1767165970.523472341] [evaluator]: EXCELLENT
 ```
-## 必要なソフトウェア
-- Python
-  - テスト済みバージョン：3.10
-- ROS2 Humble
 ## テスト環境
+- Python
+  - テスト済みバージョン：3.7 ~ 3.10
 - Ubuntu 22.04.5 LTS
 - ROS2 Humble
 ## ライセンス
