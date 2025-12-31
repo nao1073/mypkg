@@ -12,26 +12,25 @@ $ source install/setup.bash
 ```
 
 ## worker_evaluatorコマンド
-- workerコマンド
-  - 確率的にタイミングをずらす心拍を模した信号を出力します。
-- evalutorコマンド
-  - workerコマンドから受け取った心拍信号の到達間隔からタイミングを評価します。
-  - 評価はEXCELLENT / WARNING / CRITICALの3種類で間隔が小さほどEXCELLENT、大きいほどCRITICALになります。
-- worker_evaluatorコマンド
-  - workerコマンドとevalutorコマンドをまとめて起動・管理するlaunchファイルです。
+- workerノード
+  - 確率的にタイミングのずれた心拍を模した信号を出力します。
+- evalutorノード
+  - workerコマンドから受け取った心拍信号の到達間隔からEXCELLENT / WARNING / CRITICALの3段階でタイミングを評価します。
+- worker_evaluator　launch
+  - workerノードとevaluatorノードを同時に起動・管理するlaunchファイルです。
 
-実行方法と出力例
+## 実行方法と出力例
 ```
 $ ros2 launch mypkg worker_evaluator.launch.py
 [evaluator-2] [INFO] [1767159470.120806471] [evaluator]: EXCELLENT
 ```
 ## 必要なソフトウェア
 - Python
-  - テスト済みバージョン：3.7~3.10
-
+  - テスト済みバージョン：3.10
+- ROS2 Humble
 ## テスト環境
 - Ubuntu 22.04.5 LTS
-
+- ROS2 Humble
 ## ライセンス
 - このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されています。
 - © 2025 Nao Takahashi
