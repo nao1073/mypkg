@@ -7,21 +7,12 @@ class EvaluatorNode(Node):
     def __init__(self):
         super().__init__('evaluator')
 
-        self.declare_parameter('ok_time', 1.5)
-        self.declare_parameter('warn_time', 3.0)
-
-        self.ok_time = self.get_parameter('ok_time').value
-        self.warn_time = self.get_parameter('warn_time').value
+        self.ok_time = self.get_parameter('ok_time', 1.0).value
+        self.warn_time = self.get_parameter('warn_time', 2.0).value
 
         self.last_time = time.time()
 
-        self.create_subscription(
-            Int32,
-            'heartbeat',
-            self.callback,
-            10
-        )
-
+        self.create_subscription(Int32, 'heartbeat', self.callback, 10)
         self.create_timer(1.0, self.evaluate)
 
     def callback(self, msg):
