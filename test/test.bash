@@ -11,11 +11,9 @@ timeout 30 ros2 launch mypkg worker_evaluator.launch.py skip_probability:=0.0 > 
 
 cat /tmp/mypkg.log | grep 'EXCELLENT'
 
-timeout 30 ros2 launch mypkg worker_evaluator.launch.py skip_probability:=0.4 \
-  > /tmp/mypkg.log 2>&1
+timeout 30 ros2 launch mypkg worker_evaluator.launch.py skip_probability:=0.4 > /tmp/mypkg.log 2>&1
 cat /tmp/mypkg.log | grep 'WARNING'
 
-timeout 30 ros2 launch mypkg worker_evaluator.launch.py skip_probability:=0.8 \
-  > /tmp/mypkg.log 2>&1
+timeout 30 ros2 launch mypkg worker_evaluator.launch.py skip_probability:=0.8 > /tmp/mypkg.log 2>&1
 cat /tmp/mypkg.log | grep 'CRITICAL'
 

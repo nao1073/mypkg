@@ -23,6 +23,7 @@ $ source install/setup.bash
 実行方法と出力例
 ```
 $ ros2 launch mypkg worker_evaluator.launch.py
+[evaluator-2] [INFO] [1767159470.120806471] [evaluator]: EXCELLENT
 ```
 ## 必要なソフトウェア
 - Python
