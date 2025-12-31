@@ -7,19 +7,18 @@ class WorkerNode(Node):
     def __init__(self):
         super().__init__('worker')
 
-        rate = self.get_parameter('publish_rate', 1.0).value
-        self.skip_prob = self.get_parameter('skip_probability', 0.3).value
+        rate = self.declare_parameter('publish_rate', 1.0).value
+        self.skip_prob = self.declare_parameter('skip_probability', 0.3).value
 
-        self.publisher_ = self.create_publisher(Int32, 'heartbeat', 10)
+        self.publisher = self.create_publisher(Int32, 'heartbeat', 10)
         self.create_timer(1.0 / rate, self.publish)
 
-    def publish_heartbeat(self):
+    def publish(self):
         if random.random() >= self.skip_prob:
             self.publisher.publish(Int32(data=1))
 
-
 def main():
     rclpy.init()
-    rclpy.spin(WorkerNode)
+    rclpy.spin(WorkerNode())
     rclpy.shutdown()
 

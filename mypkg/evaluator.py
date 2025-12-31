@@ -30,6 +30,6 @@ class EvaluatorNode(Node):
 
 def main():
     rclpy.init()
-    rclpy.spin(EvaluatorNode)
+    rclpy.spin(EvaluatorNode())
     rclpy.shutdown()
 
