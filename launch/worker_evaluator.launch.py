@@ -30,8 +30,8 @@ def generate_launch_description():
             output='screen',
             emulate_tty=True,
             parameters=[
-                {'ok_time': 1.5},
-                {'warn_time': 3.0},
+                {'ok_time': 1.0},
+                {'warn_time': 2.0},
             ],
         ),
     ])

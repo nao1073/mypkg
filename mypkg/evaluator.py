@@ -32,13 +32,10 @@ class EvaluatorNode(Node):
 
         if elapsed < self.ok_time:
             self.get_logger().info('EXCELLENT')
-            print("EXCELLENT", flush=True)
         elif elapsed < self.warn_time:
             self.get_logger().warn('WARNING')
-            print("WARNING", flush=True)
         else:
             self.get_logger().error('CRITICAL')
-            print("CRITICAL", flush=True)
 
 def main():
     rclpy.init()
