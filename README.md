@@ -19,9 +19,9 @@ $ git clone https://github.com/nao1073/mypkg.git
 
 ## トピック
 - /heartbeat
-workerノードから出力される心拍信号
+  - workerノードから出力される心拍信号
 - /evaluation
-受け取った心拍信号を評価しevalutorノードから出力される評価結果
+  - 受け取った心拍信号を評価しevalutorノードから出力される評価結果
 
 実行方法と出力例
 ```
