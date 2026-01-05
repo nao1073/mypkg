@@ -4,6 +4,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int32
+from std_msgs.msg import String
 import time
 
 class EvaluatorNode(Node):
@@ -17,19 +18,26 @@ class EvaluatorNode(Node):
 
         self.create_subscription(Int32, 'heartbeat', self.callback, 10)
         self.create_timer(1.0, self.evaluate)
+        self.pub = self.create_publisher(String, 'evaluation', 10)
 
     def callback(self, _):
         self.last_time = time.time()
 
     def evaluate(self):
         elapsed = time.time() - self.last_time
+        msg = String()
 
         if elapsed < self.ok_time:
-            self.get_logger().info('EXCELLENT')
+            msg.data = 'EXCELLENT'
+            self.get_logger().info(msg.data)
         elif elapsed < self.warn_time:
-            self.get_logger().warn('WARNING')
+            msg.data = 'WARNING'
+            self.get_logger().warn(msg.data)
         else:
-            self.get_logger().error('CRITICAL')
+            msg.data = 'CRITICAL'
+            self.get_logger().error(msg.data)
+
+        self.pub.publish(msg)
 
 def main():
     rclpy.init()
