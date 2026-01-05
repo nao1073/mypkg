@@ -10,7 +10,7 @@ cd "$dir/ros2_ws" || exit 1
 colcon build
 source "$dir/.bashrc"
 
-timeout 60 ros2 launch mypkg worker_evaluator.launch.py skip_probability:=0.8 > /tmp/mypkg.log 2>&1
+timeout 30 ros2 launch mypkg worker_evaluator.launch.py skip_probability:=0.8 > /tmp/mypkg.log 2>&1
 
 grep 'EXCELLENT' /tmp/mypkg.log || exit 1
 grep 'WARNING' /tmp/mypkg.log || exit 1
