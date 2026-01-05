@@ -17,7 +17,7 @@ $ git clone https://github.com/nao1073/mypkg.git
 - worker_evaluator　launch
   - workerノードとevaluatorノードを同時に起動・管理するlaunchファイルです。
 
-## トピック
+トピック
 - /heartbeat
   - workerノードから出力される心拍信号
 - /evaluation
