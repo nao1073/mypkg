@@ -9,13 +9,19 @@
 $ git clone https://github.com/nao1073/mypkg.git
 ```
 
-## worker_evaluatorコマンド
+## 概要
 - workerノード
   - 一定周期の信号を生成しますが確率的に信号をスキップし、不規則な信号を送信します。
 - evalutorノード
-  - workerコマンドから受け取った心拍信号の到達間隔からEXCELLENT / WARNING / CRITICALの3段階でタイミングを評価します。
+  - workerノードから受け取った心拍信号の到達間隔からEXCELLENT / WARNING / CRITICALの3段階でタイミングを評価します。
 - worker_evaluator　launch
   - workerノードとevaluatorノードを同時に起動・管理するlaunchファイルです。
+
+## トピック
+- /heartbeat
+workerノードから出力される心拍信号
+- /evaluation
+受け取った心拍信号を評価しevalutorノードから出力される評価結果
 
 実行方法と出力例
 ```
