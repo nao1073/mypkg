@@ -3,19 +3,10 @@
 
 ![test](https://github.com/nao1073/mypkg/actions/workflows/test.yml/badge.svg)
 
-## 事前準備
-以下のようにこのリポジトリをクローンしてください。
-```
-$ git clone https://github.com/nao1073/mypkg.git
-```
-
 ## 概要
-- workerノード
-  - 一定周期の信号を生成しますが確率的に信号をスキップし、不規則な信号を送信します。
-- evalutorノード
-  - workerノードから受け取った心拍信号の到達間隔からEXCELLENT / WARNING / CRITICALの3段階でタイミングを評価します。
-- worker_evaluator　launch
-  - workerノードとevaluatorノードを同時に起動・管理するlaunchファイルです。
+ROS2を使用して心拍信号の監視を行うノードです。
+心拍を模した信号を送信するworkerノードと、その到達間隔からEXCELLENT / WARNING / CRITICALの3段階でタイミングを評価するevalutorノードから構成されます。
+二つのノードはworker_evaluator.launchファイルによって同時に起動・管理されています。
 
 トピック
 - /heartbeat
