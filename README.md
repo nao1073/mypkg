@@ -4,8 +4,8 @@
 ![test](https://github.com/nao1073/mypkg/actions/workflows/test.yml/badge.svg)
 
 ## 概要
-- ROS2を使用して心拍信号の監視を行うノードです。
-- 心拍を模した信号を送信するworkerノードと、その到達間隔からEXCELLENT / WARNING / CRITICALの3段階でタイミングを評価するevalutorノードから構成されます。
+- 本パッケージは、ROS2を使用して心拍信号の監視を行うものです。
+- 心拍を模した信号を送信するworkerノードと、その到達間隔からEXCELLENT / WARNING / CRITICALの3段階でタイミングを評価するevalutorノードから構成されています。
 - 二つのノードはworker_evaluator.launchファイルによって同時に起動・管理されています。
 
 ### トピック
